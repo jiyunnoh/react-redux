@@ -1,10 +1,16 @@
 // import { configureStore } from "@reduxjs/toolkit";
 import { createStore } from "redux";
 
-const counterReducer = (state = { counter: 0 }, action: { type: string; }) => {
+const counterReducer = (state = { counter: 0 }, action: { type: string; amount: number }) => {
     if (action.type === 'increment') {
         return {
             counter: state.counter + 1
+        }
+    }
+
+    if (action.type === 'increase') {
+        return {
+            counter: state.counter + action.amount
         }
     }
 
