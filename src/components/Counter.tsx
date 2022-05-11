@@ -2,10 +2,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { counterActions } from '../store';
 import classes from './Counter.module.css';
 
+type CounterReducerType = {
+  counter: number
+  showCounter: boolean
+}
+
 const Counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector((state: { counter: number }) => state.counter);
-  const show = useSelector((state: { showCounter: boolean }) => state.showCounter);
+  const counter = useSelector((state: { counter: CounterReducerType }) => state.counter.counter);
+  const show = useSelector((state: { counter: CounterReducerType }) => state.counter.showCounter);
 
   const toggleCounterHandler = () => {
     dispatch(counterActions.toggleCounter());
